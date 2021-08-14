@@ -1,0 +1,157 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+#chat {
+  width: 60%;
+  margin: auto;
+}
+.room-info {
+  padding-top: .4rem;
+  color: white;
+  background-color: #25D366;
+  height: 3rem;
+}
+.room-info p {
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+}
+.onlines {
+  text-shadow: 1px 1px 1px black;
+}
+.online-user-names {
+  text-shadow: 1px 1px 1px grey;
+  font-size: .9rem;
+}
+ /* ScrollBar styles for messages */
+#messages::-webkit-scrollbar-track
+{
+	border: 1px solid 075E54;
+	background-color: #F5F5F5;
+}
+#messages::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: #F5F5F5;
+}
+#messages::-webkit-scrollbar-thumb
+{
+	background-color: #075E54;	
+}
+#messages {
+  background-color: #FFFFFF;
+  padding-block: 0;
+  margin-block: 0;
+  height: calc(100vh - 6.5rem);
+  overflow-y: auto;
+  padding-inline: 2rem 1rem;
+  border: 1px solid rgb(200, 200, 200);
+  border-bottom: none;
+}
+li {
+  margin-block: .5rem;
+}
+.message-username {
+  font-weight: 600;
+  margin-right: 1.8rem;
+}
+.speech {
+  text-align: left;
+  word-break: break-all;
+  border-radius: 7px;
+  padding: .3rem;
+  box-shadow: 0px 0px 1px grey;
+  list-style-type: none;
+  display: flex;
+}
+.own-speech-bubble {
+  margin-inline: auto 1rem;
+  position: relative;
+	background: #DCF8C6;
+	border-radius: .4em;
+  padding: .5rem;
+  }
+.own-speech-bubble:after {
+	content: '';
+	position: absolute;
+	right: -.9rem;
+	top: .3rem;
+	width: 0;
+	height: 0;
+	border: 1rem solid transparent;
+	border-left-color: #DCF8C6;
+	border-right: 0;
+	border-top: 0;
+}
+.speech-bubble {
+	position: relative;
+	background: #E7E7DE;
+	border-radius: .4em;
+  padding: .5rem;
+}
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: -1rem;
+	top: .3rem;
+	width: 0;
+	height: 0;
+	border: 1rem solid transparent;
+	border-right-color: #E7E7DE;
+	border-left: 0;
+	border-top: 0;
+}
+.own-speech span:nth-child(2),
+.speech span:nth-child(2) {
+  margin-inline: 2rem;
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  border: 1px solid rgb(200, 200, 200);
+  border-top: none;
+  padding-inline: .5rem;
+}
+#input {
+  font-size: 1rem;
+  width: 85%;
+  padding: .4rem .7rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 4px black;
+  margin-right: 1rem;
+}
+button {
+  cursor: pointer;
+  border: 0;
+  background-color: #34B7F1;
+  color: white;
+  padding: .6rem 1rem;
+  border-radius: 1rem;
+  font-weight: 700;
+}
+#input:focus,
+button:focus {
+  outline: 0;
+}
+button:hover {
+  opacity: .8;
+}
+@media (max-width: 1000px) {
+  #chat {
+    width: 80%;
+  }
+}
+@media (max-width: 470px) {
+  #chat {
+    width: 100%;
+  }
+}
