@@ -29,9 +29,10 @@ export default {
       this.socket.emit('typing', this.user)
     },
     joinServer() {
-      // LoggedIn Users
-      // this.user = prompt('Enter your username', 'Anonymous')
+      if(!localStorage.getItem('user')) return this.$router.push('/')
+      this.user = localStorage.getItem('user')
       if(!this.user) this.user = 'Anonymous'
+      
       this.socket.emit('loggedIn', this.user)
       this.socket.on('loggedIn', users => {
         this.users = users
