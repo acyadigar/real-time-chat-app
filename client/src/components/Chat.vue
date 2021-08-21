@@ -13,6 +13,11 @@ export default {
       users: []
     }
   },
+  computed: {
+    apiUrl() {
+      return process.env.VUE_APP_API_URL || 'http://localhost:3000'
+    }
+  },
   methods: {
     sendMessage(e) {
       e.preventDefault()
