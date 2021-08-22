@@ -4,22 +4,19 @@
     h1 Get a username to chat!
     .input
       input.username(placeholder='Username' v-model='username')
-      button(@click='directTo')
+      button(@click='setUsername(username)')
         pre Next   >>
 </template>
 
 <script>
 export default {
+  inject: ['setUsername'],
   data() {
     return {
       username: ''
     }
   }, 
   methods: {
-    directTo() {
-      localStorage.setItem('user', this.username)
-      this.$router.push('/chat-room')
-    },
     checkIfLoggedBefore(){
       const username = localStorage.getItem('user')
       if(username) this.$router.push('/chat-room')

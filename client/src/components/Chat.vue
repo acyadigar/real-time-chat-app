@@ -2,20 +2,15 @@
 import { io } from 'socket.io-client'
 
 export default {
+  inject: ['user'],
   data() {
     return {
-      socket: io(this.apiUrl),
-      user: '',
+      socket: io(process.env.VUE_APP_API_URL || 'http://localhost:3000'),
       message: '',
       messages: [],
       isTyping: false,
       typingText: '',
       users: []
-    }
-  },
-  computed: {
-    apiUrl() {
-      return process.env.VUE_APP_API_URL || 'http://localhost:3000'
     }
   },
   methods: {
