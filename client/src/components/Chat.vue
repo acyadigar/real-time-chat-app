@@ -34,8 +34,9 @@ export default {
       if(!this.user) this.user = 'Anonymous'
       
       this.socket.emit('loggedIn', this.user)
-      this.socket.on('loggedIn', users => {
-        this.users = users
+      this.socket.on('loggedIn', result => {
+        this.users = result.users
+        this.messages = result.messages
       })
       this.listen()
     },
@@ -75,6 +76,7 @@ export default {
       div.own-speech-bubble(v-if='message.username == user') {{message.message}}
       div.speech-bubble(v-else) 
         span {{message.message}}
+        p.msg-date {{parseInt((message.date).split('T')[1].split(':')[0]) + 3}}:{{message.date.split('T')[1].split(':')[1]}}
     li.speech(v-if='isTyping') {{typingText}}
   form#form
     input#input(v-model='message' @change='typing' placeholder='Say something...' autocomplete='off')
