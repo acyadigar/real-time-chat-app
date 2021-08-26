@@ -14,6 +14,18 @@ export default {
     }
   },
   methods: {
+    async askForNotificationPermission() {
+      const permission = await Notification.requestPermission()
+      console.log(permission);
+    },
+    notify(user, message){
+      console.log(user, message);
+      const notification = new Notification('New message from Chit-Chat!', {
+        body: `${user}: ${message}`
+      })
+
+      notification.onclick = (e) => { window.location.href = 'http://localhost:8080/chat-room'}
+    },
     sendMessage(e) {
       e.preventDefault()
       if(this.message.length) {
@@ -29,6 +41,7 @@ export default {
       this.socket.emit('typing', this.user)
     },
     joinServer() {
+      this.askForNotificationPermission()
       if(!localStorage.getItem('user')) return this.$router.push('/')
       this.user = localStorage.getItem('user')
       if(!this.user) this.user = 'Anonymous'
@@ -49,6 +62,7 @@ export default {
 
       // Chat message
       this.socket.on('chat message', message => {
+        this.notify(message.username, message.message)
         this.messages.push(message)
       })
 
